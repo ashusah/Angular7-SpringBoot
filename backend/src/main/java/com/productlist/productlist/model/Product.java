@@ -1,15 +1,12 @@
 package com.productlist.productlist.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Data
 @NoArgsConstructor
@@ -23,17 +20,24 @@ public class Product {
     private Long productId;
 
     @NonNull
+    @Column
     private String productName;
 
+    @Column
     private String productCode;
 
+    @Column
     private String releaseDate;
 
+    @Column
     private String description;
 
+    @Column
     private Double price;
 
+    @Column
     private int starRating;
 
+    @Column
     private String imageUrl;
 }
