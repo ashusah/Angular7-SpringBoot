@@ -10,6 +10,60 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>database-migration</artifactId>
+    <properties>
+        <flyway.user>sa</flyway.user>
+        <flyway.password>password</flyway.password>
+        <org.flywaydb.version>5.2.4</org.flywaydb.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>flyway-dev</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.flywaydb</groupId>
+                        <artifactId>flyway-maven-plugin</artifactId>
+                        <version>${org.flywaydb.version}</version>
+                        <executions>
+                            <execution>
+                                <id>um</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>migrate</goal>
+                                </goals>
+                                <configuration>
+                                    <url>jdbc:h2:mem:testdb</url>
+                                    <locations>
+                                        <location>
+                                            classpath:db/migration/um
+                                        </location>
+                                    </locations>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>com.h2database</groupId>
+                                <artifactId>h2</artifactId>
+                                <version>1.4.200</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 
 </project>
