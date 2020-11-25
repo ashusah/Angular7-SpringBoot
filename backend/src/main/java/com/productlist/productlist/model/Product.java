@@ -13,6 +13,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "product")
 public class Product {
     @Id
     @NonNull
