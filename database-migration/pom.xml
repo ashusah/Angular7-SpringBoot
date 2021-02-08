@@ -11,8 +11,8 @@
 
     <artifactId>database-migration</artifactId>
     <properties>
-        <flyway.user>ashu@localhost123</flyway.user>
-        <flyway.password>Deepali@3110</flyway.password>
+        <flyway.user>root</flyway.user>
+        <flyway.password>usbw</flyway.password>
         <org.flywaydb.version>5.2.4</org.flywaydb.version>
     </properties>
     <dependencies>
@@ -42,7 +42,7 @@
                                     <goal>migrate</goal>
                                 </goals>
                                 <configuration>
-                                    <url>jdbc:mysql://localhost123.mysql.database.azure.com:3306/testdb?serverTimezone=UTC</url>
+                                    <url>jdbc:mysql://localhost:3306/testdb</url>
                                     <locations>
                                         <location>
                                             classpath:db/migration/um
